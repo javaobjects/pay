@@ -35,9 +35,7 @@ public String updateProduct(Product product)
 再请求：http://localhost:8080/pay/product/udpateProduct.do?productId=100 会抛出异常并处理异常
 
 ```
-1. 新建一个ProductController类
-
-2. 配置pom.xml 导包
+1. 配置pom.xml 导包
 
 ```
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -174,5 +172,8 @@ public String updateProduct(Product product)
   </build> 
 </project>
 ```
+保存后会自动下载所需依赖包，如图所示
 
+![](72-Images/1.png)
 
+2. 新建一个ProductController类和Product类
