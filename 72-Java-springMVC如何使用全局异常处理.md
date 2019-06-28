@@ -398,3 +398,19 @@ public class CustomExceptionResolver implements HandlerExceptionResolver {
 	<context:component-scan base-package="net.tencent.demo"></context:component-scan>
 </beans>
 ```
+6. 新建error.jsp
+
+```
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+出错了：${message}
+</body>
+</html>
+```
