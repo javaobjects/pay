@@ -1,0 +1,34 @@
+
+1.配置依赖：编辑pom.xml文件
+springMVC的依赖   日志包的依赖   校验包的依赖 注意不要少包：aop context tx aspect expression  core web webMVC
+
+2.编写Controller：商品管理模块的控制器
+
+
+3.定义商品实体类，并在ProductController中定义修改商品信息的方法
+
+public String updateProduct(Product product)
+{
+	if(product.getId()==100)//把这种情况当做这个商品已经不存在了
+	{
+		throw new CustomException("商品已经不存在了");
+	}else
+	{
+		//修改商品信息
+		System.out.println("修改商品信息");
+		return "";
+	}
+}
+
+4.自定义异常类型
+
+5.定义统一的异常处理器ExceptionResolver
+注意给类加注解：@ControllerAdvice  
+给方法加注解：@ExceptionHandler
+
+修改：springMVC.xml文件，把全包扫描的包名改成：net.neuedu.demo,这样handler包也会扫描到
+
+6.配置并测试
+先请求：http://localhost:8080/pay/product/udpateProduct.do?productId=10 正常
+再请求：http://localhost:8080/pay/product/udpateProduct.do?productId=100 会抛出异常并处理异常
+
