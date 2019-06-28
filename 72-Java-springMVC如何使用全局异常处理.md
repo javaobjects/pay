@@ -333,3 +333,68 @@ public class CustomExceptionResolver implements HandlerExceptionResolver {
 }
 ```
 
+5. 需要将这个异常配置下，在src/main/webapp/WEB-INF目录下配置springmvc-servlet.xml
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+
+	<!-- <bean id="handlerExceptionResolver" class="net.neuedu.demo.handler.CustomExceptionResolver"></bean> -->
+
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/"></property>
+		<property name="suffix" value=".jsp"></property>  <!-- /WEB-INF/index.jsp -->
+	</bean>
+
+	<mvc:annotation-driven></mvc:annotation-driven>
+
+	<!-- 定义校验器bean -->
+	<!-- <bean id="validator"
+		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+		<property name="providerClass" value="org.hibernate.validator.HibernateValidator"></property>
+		<property name="validationMessageSource" ref="messageSource"></property>
+	</bean> -->
+
+<!-- 定义校验出错的信息提示文件 -->
+	<!-- <bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>classpath:customerValidationMessages</value>
+			</list>
+		</property>
+		<property name="fileEncodings" value="utf-8"></property>
+	</bean> -->
+
+
+	<!-- <bean id="conversionService"
+		class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+		<property name="converters">
+			<list>
+				<bean class="net.neuedu.demo.converter.CustomerDateConverter"></bean>
+			</list>
+		</property>
+
+	</bean> -->
+	
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+			
+			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+			</list>
+		</property>
+	</bean>
+
+	<context:component-scan base-package="net.tencent.demo"></context:component-scan>
+</beans>
+```
