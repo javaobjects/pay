@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import net.tencent.demo.domain.Product;
+import net.tencent.demo.exception.CustomException;
 
 /**
  * 商品管理模块的控制器
