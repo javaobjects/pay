@@ -1,5 +1,5 @@
 # 69-Java如何设置Maven仓库中没有的坐标_oracle驱动包.md
-fdsfdf
+
 注意：Oracle驱动没有Maven构建，需要自己创建构建;
 
 1. 查询Oracle的版本 select * from v$version; 或参考博客 [Oracle-查看版本号](https://www.jianshu.com/p/380dca06c1cb)
